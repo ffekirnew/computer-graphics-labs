@@ -1,0 +1,4 @@
+numpy
+PyGame
+PyOpenGL
+ipykernel
