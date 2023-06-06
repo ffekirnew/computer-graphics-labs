@@ -13,5 +13,6 @@ def test():
 
     print(show_determinant(array))
 
+
 if __name__ == "__main__":
     test()

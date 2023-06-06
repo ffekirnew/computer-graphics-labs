@@ -10,7 +10,7 @@ triangle_vertices = (
 )
 
 
-def Triangle():
+def triangle():
     glBegin(GL_TRIANGLES)
 
     glColor3f(0.5, 0, 0.5)
@@ -34,7 +34,7 @@ def main():
                 pygame.quit()
                 quit()
 
-        Triangle()
+        triangle()
 
         pygame.display.flip()
 
