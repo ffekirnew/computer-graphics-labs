@@ -1,45 +1,34 @@
 import pygame
 from pygame.locals import *
-from OpenGL.GL import *
-from OpenGL.GL.shaders import *
-from shader import Shader
-from cube import Cube
-import os
 
-os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
+from OpenGL.GL import *
+from OpenGL.GLU import *
+from OpenGL.GL.shaders import *
+
+import numpy as np
+
+
+def draw():
+    pass
 
 
 def main():
-    # Initialize Pygame
     pygame.init()
-    width, height = 800, 600
-    pygame.display.set_mode((width, height), DOUBLEBUF | OPENGL)
+    display = (800, 600)
 
-    # Create a shader program
-    shader_program = Shader("vertex_shader.glsl", "fragment_shader.glsl")
+    pygame.display.set_mode(display, DOUBLEBUF | OPENGL)
+    pygame.display.set_caption("Shaders")
 
-    # Create a cube object
-    cube = Cube()
+    gluPerspective(45, (display[0] / display[1]), 0.1, 50.0)
+    glTranslatef(0.0, 0.0, -50)
 
-    # Main game loop
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
-                quit()
+                return
 
-        # Clear the screen
-        glClearColor(0.2, 0.2, 0.2, 1.0)
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
-
-        # Set up the shader program
-        shader_program.use()
-
-        # Rotate the cube
-        cube.rotate(0.5, 1, 1, 1)
-
-        # Render the cube
-        cube.render()
+        draw()
 
         pygame.display.flip()
         pygame.time.wait(10)
